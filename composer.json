@@ -1,5 +1,5 @@
 {
-    "name": "your-vendor-name/your-project-name",
+    "name": "webapp-Firstappfordevopsproj",
     "description": "Your project description",
     "type": "project",
     "license": "MIT",
@@ -10,13 +10,12 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "vendor/package": "version"
-        // Add other dependencies as needed
+        "php": ">=7.4"
+        // Add other dependencies as needed from your YAML file
     },
     "autoload": {
         "psr-4": {
-            "YourNamespace\\": "src/"
+            "webapp-Firstappfordevopsproj\\": "src/"
         }
     },
     "scripts": {
@@ -26,4 +25,3 @@
         ]
     }
 }
-
