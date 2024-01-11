@@ -1,6 +1,6 @@
 {
     "name": "webapp-Firstappfordevopsproj",
-    "description": "Your project description",
+    "description": "Simple PHP Hello, World! Project",
     "type": "project",
     "license": "MIT",
     "authors": [
