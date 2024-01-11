@@ -20,7 +20,7 @@ variables:
   environmentName: 'webapp-Firstappfordevopsproj'
 
   # Root folder under which your composer.json file is available.
-  rootFolder: $(System.DefaultWorkingDirectory)
+  rootFolder: '$(System.DefaultWorkingDirectory)'
 
 stages:
 - stage: Build
@@ -29,7 +29,8 @@ stages:
     phpVersion: '7.4'
   jobs:
   - job: BuildJob
-    pool: hosted22
+    pool: 
+      vmImage: $(vmImageName)
     steps:
     - script: |
         sudo update-alternatives --set php /usr/bin/php$(phpVersion)
@@ -41,8 +42,9 @@ stages:
       workingDirectory: $(rootFolder)
       displayName: 'Use PHP version $(phpVersion)'
 
-    - script: composer install --no-interaction --prefer-dist
-      workingDirectory: $(rootFolder)
+    - script: |
+        cd $(rootFolder)
+        composer install --no-interaction --prefer-dist
       displayName: 'Composer install'
 
     - task: ArchiveFiles@2
@@ -51,10 +53,10 @@ stages:
         rootFolderOrFile: '$(rootFolder)'
         includeRootFolder: false
         archiveType: zip
-        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
 
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    - upload: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       displayName: 'Upload package'
       artifact: drop
 
