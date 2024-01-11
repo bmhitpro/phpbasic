@@ -11,17 +11,5 @@
     ],
     "require": {
         "php": ">=7.4"
-        // Add other dependencies as needed from your YAML file
-    },
-    "autoload": {
-        "psr-4": {
-            "webapp-Firstappfordevopsproj\\": "src/"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "php artisan optimize"
-            // Add other post-install commands if needed
-        ]
     }
 }
